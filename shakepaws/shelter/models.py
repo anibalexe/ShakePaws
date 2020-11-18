@@ -6,7 +6,6 @@ class Sponsor(models.Model):
     name = models.CharField(max_length = 50, verbose_name = "Nombre")
     description = models.TextField(verbose_name="Descripción")
     cost = models.IntegerField(verbose_name = "Costo")
-    sponsored = models.IntegerField(default = 0)
     
     class Meta:
         verbose_name = "Apadrinamiento"
@@ -23,7 +22,7 @@ class Animal(models.Model):
     image = models.ImageField(verbose_name = "Imagen", upload_to = "Animales")
     created = models.DateTimeField(auto_now_add = True, verbose_name = "Fecha de creación")
     updated = models.DateTimeField(auto_now = True, verbose_name = "Fecha de modificación")
-    sponsors = models.ManyToManyField(Sponsor, verbose_name = "Apadrinamientos")
+    sponsors = models.ManyToManyField(Sponsor, through = "Animal_sponsor" , verbose_name = "Apadrinamientos")
  
 
     class Meta:
@@ -34,6 +33,7 @@ class Animal(models.Model):
     def __str__(self):
         return self.name
 
-#class Animal_sponsors(models.Model):
-#    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
-#    sponsor = models.ForeignKey(Sponsor, on_delete = models.CASCADE)
+class Animal_sponsor(models.Model):
+    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
+    sponsor = models.ForeignKey(Sponsor, on_delete = models.CASCADE)
+    
