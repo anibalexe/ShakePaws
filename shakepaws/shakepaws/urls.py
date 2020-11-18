@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core import views as core_views
 from shelter import views as shelter_views
 from django.conf import settings
 from animalProfile import views as animalProfile_views
+#from registration import views as registration_views
 
 urlpatterns = [
     path('', core_views.index, name = "inicio"),
@@ -27,6 +28,9 @@ urlpatterns = [
     path('perfil-animal/<int:animal_id>/', animalProfile_views.profile , name = "perfil-animal"),
     path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
     path('admin/', admin.site.urls),
+    #Path de autenticación
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('registration.urls')),
 ]
 
 if settings.DEBUG:
