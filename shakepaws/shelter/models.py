@@ -6,6 +6,7 @@ class Sponsor(models.Model):
     name = models.CharField(max_length = 50, verbose_name = "Nombre")
     description = models.TextField(verbose_name="Descripción")
     cost = models.IntegerField(verbose_name = "Costo")
+    sponsored = models.IntegerField(default = 0)
     
     class Meta:
         verbose_name = "Apadrinamiento"
@@ -32,7 +33,7 @@ class Animal(models.Model):
 
     def __str__(self):
         return self.name
-        
-#class Animal_sponsor(models.Model):
-    #animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
-    #sponsor = models.ForeignKey(Sponsor, on_delete = models.CASCADE)
+
+#class Animal_sponsors(models.Model):
+#    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
+#    sponsor = models.ForeignKey(Sponsor, on_delete = models.CASCADE)

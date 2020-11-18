@@ -18,11 +18,14 @@ from django.urls import path
 from core import views as core_views
 from shelter import views as shelter_views
 from django.conf import settings
+from animalProfile import views as animalProfile_views
 
 urlpatterns = [
     path('', core_views.index, name = "inicio"),
     path('informacion/', core_views.information, name = "informacion"),
-    #path('mostrar', shelter_views.mostrar_animales , name = "mostrar"),
+    path('apadrinar/', shelter_views.sponsoring , name = "apadrinar"),
+    path('perfil-animal/<int:animal_id>/', animalProfile_views.profile , name = "perfil-animal"),
+    path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
     path('admin/', admin.site.urls),
 ]
 

@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class ="row justify-content-around">
+        <div class="col col-md-3 align-self-center">
+            <img class="photo" src="/media/{{animal.image}}">
+        </div>
+        <div class="col col-md-9 align-self-center">
+            <b><p>{{animal.name}}</p></b>
+            <p>Edad: {{animal.lifestage}}</p>
+            <p>Descripción: {{animal.description}}</p>
+            <p>Esta esperando desde: {{animal.created}} :'c</p> 
+        </div>
+    </div>
+    <div class ="row justify-content-around">
+        <div class="col- col-md align-self-center">
+            {{animal.sponsors.values.0.name}}<br>
+            {{animal.sponsors.values.1.name}}<br>
+            {{animal.sponsors.values.2.name}}
+       </div>
+    </div>
+</div>
+
+        
+{% endblock %}
