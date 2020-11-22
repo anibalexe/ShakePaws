@@ -19,6 +19,7 @@ from core import views as core_views
 from shelter import views as shelter_views
 from django.conf import settings
 from animalProfile import views as animalProfile_views
+from sponsorProfile import views as sponsorProfile_views
 #from registration import views as registration_views
 
 urlpatterns = [
@@ -26,8 +27,10 @@ urlpatterns = [
     path('informacion/', core_views.information, name = "informacion"),
     path('apadrinar/', shelter_views.sponsoring , name = "apadrinar"),
     path('perfil-animal/<int:animal_id>/', animalProfile_views.profile , name = "perfil-animal"),
+    #path('perfil-padrino/<int:id>/', sponsorProfile_views.profile , name = "perfil-padrino"),
     path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name = "administrador"),
+    
     #Path de autenticación
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('registration.urls')),

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'shelter.apps.ShelterConfig',
     'animalProfile',
+    'sponsorProfile',
 ]
 
 MIDDLEWARE = [

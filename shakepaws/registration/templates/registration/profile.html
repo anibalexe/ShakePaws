@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil de Padrino{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class ="row justify-content-around">
+        <div class="col col-md-4 align-self-center">
+            {% if 'ok' in request.GET %}
+                <p style="color: rgb(53, 236, 53)">Se ha actualizado correctamente los datos de su perfil</p>
+            {% endif %}
+            <form action="" method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center"> 
+                    <input type="submit"  class="btn btn-dark btncard" value="Guardar" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col col-md-4 align-self-center">
+            <p>Notificaciones</p>
+        </div>
+    </div>
+</div>     
+{% endblock %}
