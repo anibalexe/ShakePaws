@@ -27,6 +27,9 @@ urlpatterns = [
     path('informacion/', core_views.information, name = "informacion"),
     path('apadrinar/', shelter_views.sponsoring , name = "apadrinar"),
     path('perfil-animal/<int:animal_id>/', animalProfile_views.profile , name = "perfil-animal"),
+    
+    path('validation/<int:animal_id>/<sponsor_id>/', animalProfile_views.validation , name = "validation"),
+    
     #path('perfil-padrino/<int:id>/', sponsorProfile_views.profile , name = "perfil-padrino"),
     path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
     path('admin/', admin.site.urls, name = "administrador"),

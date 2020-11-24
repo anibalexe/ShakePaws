@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class ="row justify-content-around">
+    <div class ="row justify-content-around mt-3">
         <div class="col col-md-3 align-self-center">
             <img class="photo" src="/media/{{animal.image}}">
         </div>
@@ -15,14 +15,39 @@
             <p>Esta esperando desde: {{animal.created}} :'c</p> 
         </div>
     </div>
-    <div class ="row justify-content-around">
-        <div class="col- col-md align-self-center">
-            {{animal.sponsors.values.0.name}}<br>
-            {{animal.sponsors.values.1.name}}<br>
-            {{animal.sponsors.values.2.name}}
+    <div class ="row justify-content-around mt-3">
+        <div class="col- col-md align-self-start">
+            <b><p>Necesito: </p></b>
+            <ul>
+            {% for animal_sponsor in animal_sponsor %}
+                {% if animal.animal_id == animal_sponsor.animal.animal_id %}
+                    <li>{{animal_sponsor.sponsor}}</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
        </div>
+       <div class="col- col-md align-self-start mb-3">
+            <b><p>¿Con que te gustaria apadrinarl@?</p></b>
+            {% for animal_sponsor in animal_sponsor %}
+                {% if animal.animal_id == animal_sponsor.animal.animal_id %}
+                <table class="table table-hover">
+                    <tbody>
+                      <tr>
+                        <th scope="row">apadrinar en:</th>
+                        <td>{{animal_sponsor.sponsor}}</td>
+                        <td> <a href="{% url 'validation' animal.animal_id animal_sponsor.sponsor_id  %}" class="btn btn-dark btncard">Apadrinar</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 
         
 {% endblock %}
+
+
+
+

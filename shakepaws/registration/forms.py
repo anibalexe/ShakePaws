@@ -6,7 +6,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['fname', 'lname', 'email']
         widgets = {
-            'fname': forms.TextInput(attrs={'class':'form-control','placeholder':'Nombre'}),
+            'fname': forms.TextInput(attrs={'class':'form-control','placeholder':'Nombre',}),
             'lname': forms.TextInput(attrs={'class':'form-control','placeholder':'Apellido'}),
             'email': forms.TextInput(attrs={'class':'form-control','placeholder':'E-mail'}),
         }

@@ -5,22 +5,54 @@
 {% block content %}
 <div class="container-fluid">
     <div class ="row justify-content-around">
-        <div class="col col-md-4 align-self-center">
+        <div class="col col-md-5 align-self-start mt-5">
+            <h4>Datos personales</h4>
             {% if 'ok' in request.GET %}
-                <p style="color: rgb(53, 236, 53)">Se ha actualizado correctamente los datos de su perfil</p>
+            <div class="text-center">
+                <p style="color: rgb(53, 236, 53)">Los datos de su perfil se han actualizado correctamente</p>
+            </div>
             {% endif %}
             <form action="" method="post">{% csrf_token %}
                 {{ form.as_p }}
-                <div class="text-center"> 
+                <div class="text-center mt-4"> 
                     <input type="submit"  class="btn btn-dark btncard" value="Guardar" />
                 </div>
-            </form>
+            </form>   
         </div>
-    </div>
-    <div class="row justify-content-around">
-        <div class="col col-md-4 align-self-center">
-            <p>Notificaciones</p>
-        </div>
+        <div class="col col-md-6 align-self-start mt-5 text-center">
+            <h4>Notificaciones</h4>
+            <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        El apadrinamiento de Kala está retrasado.
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        El pago del apadrinamiento de Kala para comida por el monto de $10.000 esta retrasado en 25 dias, necesita de tu ayuda!
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Kala ha sido vacunada. 
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                      Kala recibió el apadrinamiento correspondiente a las vacunas básicas.
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
     </div>
 </div>     
 {% endblock %}
