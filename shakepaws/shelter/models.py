@@ -15,7 +15,7 @@ class Sponsor(models.Model):
         return self.name
 
 class Animal(models.Model):
-    animal_id = models.IntegerField(primary_key = True, verbose_name = "Identificación")
+    animal_id = models.IntegerField(primary_key = True, verbose_name = "N° de Chip")
     name = models.CharField(max_length = 50, verbose_name = "Nombre")
     lifestage = models.CharField(max_length = 50, verbose_name = "Etapa de vida")
     description = models.TextField(verbose_name = "Descripción")

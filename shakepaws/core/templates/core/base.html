@@ -15,10 +15,10 @@
     <link href="{% static 'core/css/styles.css' %}" rel="stylesheet">
 
 </head>
-<body>
+<body style="background-color: rgb(255, 255, 234) ;">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img width="100px" src="{% static 'core/img/logo.png' %}" alt="Shakepaws"></a>
+    <a class="navbar-brand" href="{% url 'inicio' %}"><img width="100px" src="{% static 'core/img/logooriginal.png' %}" alt="Shakepaws"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,10 +27,10 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'apadrinar' %}">Apadrinar</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'informacion' %}">Información</a>
         </li>
       </ul>
@@ -40,9 +40,9 @@
         <a style="color: white;" class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
         <a style="color: white;" class="nav-link" href="{% url 'signup' %}">Registrar</a>
       {% else %}
-          <p style="color: white;">{{request.user.username}}</p> 
+          <p style="color: white;">Hola {{request.user.username}}!</p> 
         {% if request.user.is_staff %}
-            <a style="color: white;" class="nav-link" href="/admin">Administrar</a>
+            <a style="color: white;" class="nav-link" href="/admin">Admin</a>
         {% else %}
             <a style="color: white;" class="nav-link" href="{% url 'perfil-padrino' %}">Mi Perfil</a>
         {% endif %}
