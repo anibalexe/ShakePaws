@@ -8,9 +8,14 @@
 <div class="container-fluid">
     <div class="row justify-content-around mt-5">
         <div class="col col-md-6 align-self-center">
-            <p>Desea apadrinar a {{animal.name}} con {{sponsor.name}} Por un monto de $ {{sponsor.cost}}</p>
-            <p>Presione "Confirmar pago" para aceptar</p>
-            <td> <a href="/" class="btn btn-dark btncard">Confirmar pago</a></td>
+            <form action="" method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <p>Desea apadrinar a {{animal.name}} con {{sponsor.name}} Por un monto de $ {{sponsor.cost}}</p>
+                <p>Presione "Confirmar pago" para aceptar</p>
+                <div class="text-center mt-4"> 
+                    <input type="submit"  class="btn btn-dark btncard" value="Confirmar pago" />
+                </div>
+            </form>
         </div>
     </div>
 </div>

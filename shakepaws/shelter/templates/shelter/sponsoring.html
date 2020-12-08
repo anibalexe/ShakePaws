@@ -6,25 +6,25 @@
 <div class="container-fluid" id="cartas">
     <div class ="row justify-content-around">
         {% for animal in animals %}
-        <div class="col- col-md align-self-start">
-            <div class="card dogcard">
-                <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
-                <div class="card-body">
-                <h4 class="card-title">{{animal.name}}</h4>
-                <p class="card-text">{{animal.description}}</p>
-                <p>Edad: {{animal.lifestage}}</p>
-                    <p>Necesito: </p>
-                    <ul>
-                        {% for animal_sponsor in animal_sponsor %}
-                            {% if animal.animal_id == animal_sponsor.animal.animal_id %}
-                                <li>{{animal_sponsor.sponsor}}</li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Conóceme</a>
-             </div>
-        </div>
-    </div>
+            <div class="col- col-md align-self-start">
+                <div class="card dogcard">
+                    <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">{{animal.name}}</h4>
+                        <p class="card-text">{{animal.description}}</p>
+                        <p>Edad: {{animal.lifestage}}</p>
+                        <p>Necesito: </p>
+                        <ul>
+                            {% for animal_sponsor in animal_sponsor %}
+                                {% if animal.animal_id == animal_sponsor.animal.animal_id %}
+                                    <li>{{animal_sponsor.sponsor}}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Conóceme</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
 </div>

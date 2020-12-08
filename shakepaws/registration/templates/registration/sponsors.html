@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil de Padrino{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'perfil-padrino' %}">Datos personales</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'notificaciones' %}">Notificaciones</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'apadrinamientos' %}">Apadrinamientos</a>
+  </li>
+</ul>
+
+<div class="container-fluid" id="cartas">
+    <div class ="row justify-content-around">
+        {% for profile_animal in profile_animals %}
+            {% if profile_animal.profile_id == request.user.profile.id %}
+                <div class="col- col-md-3 align-self-start mt-0 mb-5">
+                    {% for animal in animals %}
+                        {% if profile_animal.animal_id == animal.animal_id %}
+                            {% for sponsor in sponsors %}
+                                {% if profile_animal.sponsor == sponsor.sponsor_id %}
+                                <div class="card dogcard">
+                                    <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
+                                    <div class="card-body">
+                                        <td><i>Apadrinaste a {{animal.name}} con {{sponsor.name}} por un monto de ${{sponsor.cost}}</i></td>
+                                        <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Ver perfil</a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor%}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

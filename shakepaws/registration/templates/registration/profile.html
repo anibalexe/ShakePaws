@@ -3,6 +3,22 @@
 {% block title %}Perfil de Padrino{% endblock %}
 
 {% block content %}
+
+{% if request.user.is_staff %}
+{% else %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'perfil-padrino' %}">Datos personales</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'notificaciones' %}">Notificaciones</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'apadrinamientos' %}">Apadrinamientos</a>
+  </li>
+</ul>
+{% endif %}
+
 <div class="container-fluid">
     <div class ="row justify-content-around">
         <div class="col col-md-5 align-self-start mt-5">
@@ -19,40 +35,6 @@
                 </div>
             </form>   
         </div>
-        <div class="col col-md-6 align-self-start mt-5 text-center">
-            <h4>Notificaciones</h4>
-            <div id="accordion">
-                <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        25/11/2020 | Kala esta en proceso de ser vacunada.
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                      Te avisaremos a la brevedad cuando sea vacunada.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        25/11/2020 | El apadrinamiento de Kala fue exitoso.
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                      El pago del apadrinamiento de Kala fue exitoso, gracias por tu ayuda, Kala lo necesita!
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </div>
-            </div>
     </div>
-</div>     
+  </div>     
 {% endblock %}

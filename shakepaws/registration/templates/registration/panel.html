@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% load static %}
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'perfil-padrino' %}">Datos personales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Notificaciones</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">Apadrinamientos</a>
+    </li>
+</ul>
+
+  {% block content %}{% endblock %}
+
+  

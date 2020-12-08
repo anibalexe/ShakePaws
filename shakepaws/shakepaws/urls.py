@@ -28,17 +28,19 @@ urlpatterns = [
     path('apadrinar/', shelter_views.sponsoring , name = "apadrinar"),
     path('perfil-animal/<int:animal_id>/', animalProfile_views.profile , name = "perfil-animal"),
     
-    path('validation/<int:animal_id>/<sponsor_id>/', animalProfile_views.validation , name = "validation"),
+    #path('validation/<int:animal_id>/<sponsor_id>/', animalProfile_views.validation , name = "validation"),
     
     #path('perfil-padrino/<int:id>/', sponsorProfile_views.profile , name = "perfil-padrino"),
-    path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
+    #path('perfil-animal/', animalProfile_views.profile , name = "perfil-animal"),
     path('admin/', admin.site.urls, name = "administrador"),
     
     #Path de autenticación
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('registration.urls')),
+    path('accounts/', include('animalProfile.urls')),
 ]
 
+#Define la ruta de las fotos de los animales
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, 
