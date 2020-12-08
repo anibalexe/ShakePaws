@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil de Padrino{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class ="row justify-content-around">
+        {% for perfil in perfiles %}
+            {% if perfil.id == request.user.profile.id %}
+            <div class="col col-md-4 align-self-start mt-5 text-center">
+                    <img class="photo" src="/media/{{perfil.image}}" alt="">
+            </div>
+            <div class="col col-md-4 align-self-start mt-5 text-center">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr> <b>Datos</b> </tr>
+                    <tr>
+                        <td> <i>Nombre: </i></td>
+                        <td>{{perfil.fname}}</td>
+                    </tr>          
+                    <tr>
+                        <td> <i>Apellido: </i></td>
+                        <td>{{perfil.lname}}</td>
+                    </tr>  
+                    <tr>
+                        <td> <i>E-mail: </i></td>
+                        <td>{{perfil.email}}</td>
+                    </tr>                       
+                    </tbody>
+                </table> 
+                <a href="{% url 'perfil-padrino'  %}" class="btn btn-dark btncard text-center">Modificar</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

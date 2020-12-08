@@ -43,7 +43,7 @@
           <p style="color: white;">Hola {{request.user.username}}!</p> 
         {% if request.user.is_staff %}
             <a style="color: white;" class="nav-link" href="/admin">Admin</a>
-            <a style="color: white;" class="nav-link" href="{% url 'perfil-padrino' %}">Mi Perfil</a>
+            <a style="color: white;" class="nav-link" href="{% url 'perfil' %}">Mi Perfil</a>
         {% else %}
             <a style="color: white;" class="nav-link" href="{% url 'perfil-padrino' %}">Mi Perfil</a>
         {% endif %}

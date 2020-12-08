@@ -5,6 +5,7 @@ from shelter.models import Animal
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(verbose_name = "Imagen", upload_to = "Perfiles", null=True, blank=True)
     fname = models.CharField(max_length = 50, verbose_name = "Nombre")
     lname = models.CharField(max_length = 50, verbose_name = "Apellido")
     email = models.EmailField(verbose_name = "E-mail")

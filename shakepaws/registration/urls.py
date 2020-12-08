@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SignUpView, ProfileUpdate, panel, notification, sponsors
+from .views import SignUpView, ProfileUpdate, panel, notification, sponsors, perfil
 
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name="signup"),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('panel/', panel, name="panel"),
     path('notificaciones/', notification, name="notificaciones"),
     path('apadrinamientos/', sponsors, name="apadrinamientos"),
+    path('perfil/', perfil, name="perfil"),
 ]

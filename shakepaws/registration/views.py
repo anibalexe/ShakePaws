@@ -31,6 +31,10 @@ def profile(request):
     profile_animal = Profile_animal.objects.all() 
     return render(request, "registration/profile.html", {'profile_animal':profile_animal})
 
+def perfil(request):
+    perfil = Profile.objects.all()
+    return render(request, "registration/profileAdmin.html", {'perfiles':perfil})
+
 class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')

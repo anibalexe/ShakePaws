@@ -28,7 +28,7 @@
                 <p style="color: rgb(53, 236, 53)">Los datos de su perfil se han actualizado correctamente</p>
             </div>
             {% endif %}
-            <form action="" method="post">{% csrf_token %}
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
                 {{ form.as_p }}
                 <div class="text-center mt-4"> 
                     <input type="submit"  class="btn btn-dark btncard" value="Guardar" />
