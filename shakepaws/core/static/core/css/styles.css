@@ -12,12 +12,12 @@ html {
 }
 
 .card{
-    height: 380px;
+    height: 100%;
     width: 250px;
 }
 
 .card-img-top{
-    border-radius: 10px;
+    border-radius: 5px;
     /*width: 80%;*/
     height: 150px;
 }

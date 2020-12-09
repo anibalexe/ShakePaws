@@ -3,8 +3,9 @@
 {% block title %}Perfil{% endblock %}
 
 {% block content %}
+
 <div class="container-fluid">
-    <div class ="row justify-content-around mt-3">
+    <div class ="row justify-content-around mt-3" id="form_div">
         <div class="col col-md-3 align-self-center">
             <img class="photo" src="/media/{{animal.image}}">
         </div>
@@ -17,8 +18,8 @@
             <p><i> Esta esperando desde: {{animal.created}}</i></p> 
         </div>
     </div>
-    <div class ="row justify-content-around mt-3">
-        <div class="col- col-md align-self-start">
+    <div class ="row justify-content-around mt-3" id="form_div">
+        <div class="col- col-md-6 align-self-start" id="form_div">
             <b><p>Necesita: </p></b>
             <ul>
             {% for animal_sponsor in animal_sponsors %}
@@ -28,30 +29,48 @@
             {% endfor %}
             </ul>
        </div>
-       <div class="col- col-md-5 align-self-start mb-3 text-center">
+       <div class="col- col-md-5 align-self-start mb-3 text-center" id="form_div">
             <b><p>¿Te gustaria apadrinarl@?</p></b>
-            {% for animal_sponsor in animal_sponsors %}
-                {% if animal.animal_id == animal_sponsor.animal.animal_id %}
                 <table class="table table-hover">
                     <tbody>
-                        <tr>
-                            {% for profile_animal in profile_animals %}   
-                            {% if profile_animal.profile_id == request.user.profile.id%}   
-                            {% if animal_sponsor.sponsor == profile_animal.sponsor_id %}
+                        <thead>
+                            <tr>
+                              <th scope="col">Tipo</th>
+                              <th scope="col">Precio</th>
+                              <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        {% for animal_sponsor in animal_sponsors %}
+                        {% if animal.animal_id == animal_sponsor.animal.animal_id %}
+                        <tr>  
                             <td id="btn-profile-dog" scope="row">{{animal_sponsor.sponsor}}</td>
 
-                            {% endif %}
+                            {% for sponsor in sponsors %}
+                            {% if animal_sponsor.sponsor_id == sponsor.sponsor_id %}
+                            <td id="btn-profile-dog" scope="row">${{sponsor.cost}}</td>
                             {% endif %}
                             {% endfor %}
+
+
                             {% if request.user.is_staff %}
                             {% else %}
+                           
+                            {% if request.user.is_anonymous %}
+                            <td><a href="{% url 'login' %}" id="btn-profile-dog" class="btn btn-dark btncard">Apadrinar</a></td>
+                            {% endif %}
+                            
+                            {% if request.user.is_authenticated %}
                             <td><a href="{% url 'validation' animal.animal_id animal_sponsor.sponsor_id  %}" id="btn-profile-dog" class="btn btn-dark btncard">Apadrinar</a></td>
                             {% endif %}
+                            
+                            {% endif %}
+
+
                         </tr>
+                        {% endif %}
+                        {% endfor %}
                     </tbody>
                   </table>
-                {% endif %}
-            {% endfor %}
         </div>
     </div>
 </div>  

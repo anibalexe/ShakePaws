@@ -16,8 +16,10 @@
                         <p class="card-text"><i>Edad: {{animal.lifestage}}</i></p>
                         <p class="card-text"><i>Sexo: {{animal.gender}}</i></p>
                         <p class="card-text"><i>Esterilizad@: {{animal.sterilized}}</i></p>
+                        <div class="text-center mt-3">
+                            <a href="{% url 'perfil-animal' animal.animal_id  %}" id="btn-profile-dog" class="btn btn-dark btncard">Conóceme</a>
+                        </div>
                     </div>
-                    <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Conóceme</a>
                 </div>
             </div>
         {% endfor %}

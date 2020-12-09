@@ -5,6 +5,7 @@ from .models import Profile, Profile_animal
 class Profile_animalInLine(admin.TabularInline):
     model = Profile_animal
     extra = 1
+    readonly_field = ('created')
 
 class ProfileAdmin(admin.ModelAdmin):
     inlines = [Profile_animalInLine,]

@@ -12,6 +12,11 @@ from registration.models import Profile_animal
 from shelter.models import Animal, Sponsor
 # Create your views here.
 
+from django.contrib.auth.decorators import user_passes_test
+
+def staff_check(user):
+    return user.is_staff
+
 def panel(request):
     return render(request, "registration/panel.html")
 
@@ -26,6 +31,7 @@ def sponsors(request):
     sponsor = Sponsor.objects.all()
     profile_animal = Profile_animal.objects.all()
     return render(request, "registration/sponsors.html", {'animals':animal, 'sponsors':sponsor, 'profile_animals':profile_animal})
+
 
 def profile(request):
     profile_animal = Profile_animal.objects.all() 

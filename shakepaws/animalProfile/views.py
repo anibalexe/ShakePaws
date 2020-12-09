@@ -5,6 +5,12 @@ from django.urls import reverse_lazy
 from registration.models import Profile_animal, Profile
 from .forms import Profile_animalForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import user_passes_test
+
+def staff_check(user):
+    return user.is_staff
+
+#@user_passes_test(staff_check)
 
 # Create your views here.
 #def profile(request):
@@ -25,7 +31,6 @@ def validation(request, animal_id, sponsor_id):
 
 class Profile_animalCreate(CreateView):
     form_class = Profile_animalForm
-    success_url = reverse_lazy('inicio')
     template_name = 'animalProfile/validation.html'
     #anima2 = get_object_or_404(Animal, animal_id = kwargs['animal_id'])
 
@@ -38,6 +43,9 @@ class Profile_animalCreate(CreateView):
         form.instance.profile = get_object_or_404(Profile, user_id = profile_id)
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse_lazy('inicio') + '?ok'
     
 
     

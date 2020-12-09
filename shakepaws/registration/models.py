@@ -28,7 +28,9 @@ class Profile_animal(models.Model):
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE)
     animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
     sponsor = models.IntegerField()
+    created = models.DateTimeField(auto_now_add = True, verbose_name = "Fecha de creación")
 
     class Meta:
         verbose_name = "Apadrinamiento de usuario"
         verbose_name_plural = "Apadrinamientos de usuarios"
+        ordering = ["-created"]

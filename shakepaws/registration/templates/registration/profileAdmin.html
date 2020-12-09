@@ -25,10 +25,10 @@
     <div class ="row justify-content-around">
         {% for perfil in perfiles %}
             {% if perfil.id == request.user.profile.id %}
-            <div class="col col-md-4 align-self-start mt-3 text-center">
+            <div class="col col-md-3 align-self-start mt-3 text-center">
                     <img class="photo" src="/media/{{perfil.image}}" alt="">
             </div>
-            <div class="col col-md-4 align-self-start mt-5 text-center">
+            <div class="col col-md-5 align-self-start mt-3 text-center" id="form_div">
                 <table class="table table-hover">
                     <tbody>
                     <tr> <b>Datos</b> </tr>

@@ -29,8 +29,10 @@
                                     <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
                                     <div class="card-body">
                                         <td><i>Apadrinaste a {{animal.name}} con {{sponsor.name}} por un monto de ${{sponsor.cost}}</i></td>
+                                        <div class="text-center mt-3">
+                                            <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Ver perfil</a>
+                                        </div>
                                     </div>
-                                    <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Ver perfil</a>
                                 </div>
                                 {% endif %}
                             {% endfor%}
