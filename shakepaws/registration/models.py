@@ -9,10 +9,18 @@ class Profile(models.Model):
     fname = models.CharField(max_length = 50, verbose_name = "Nombre")
     lname = models.CharField(max_length = 50, verbose_name = "Apellido")
     email = models.EmailField(verbose_name = "E-mail")
+    phone = models.CharField(max_length = 50, verbose_name = "Celular", blank=True)
+    address = models.CharField(max_length = 50, verbose_name = "Direccion", blank=True)
+    role = models.CharField(max_length = 50, verbose_name = "Cargo", blank=True)
     sponsorsToAnimals = models.ManyToManyField(Animal, through = "Profile_animal" , verbose_name = "ApadrinamientosAAnimales")
 
     class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfiles"
         ordering = ['user__username']
+
+    def __str__(self):
+        return self.fname
 
     
 
@@ -20,3 +28,7 @@ class Profile_animal(models.Model):
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE)
     animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
     sponsor = models.IntegerField()
+
+    class Meta:
+        verbose_name = "Apadrinamiento de usuario"
+        verbose_name_plural = "Apadrinamientos de usuarios"

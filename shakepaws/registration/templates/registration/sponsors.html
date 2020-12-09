@@ -6,7 +6,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'perfil-padrino' %}">Datos personales</a>
+    <a class="nav-link" href="{% url 'perfil' %}">Datos personales</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{% url 'notificaciones' %}">Notificaciones</a>
@@ -16,7 +16,7 @@
   </li>
 </ul>
 
-<div class="container-fluid" id="cartas">
+<div class="container-fluid" id="form_div">
     <div class ="row justify-content-around">
         {% for profile_animal in profile_animals %}
             {% if profile_animal.profile_id == request.user.profile.id %}
@@ -29,8 +29,8 @@
                                     <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
                                     <div class="card-body">
                                         <td><i>Apadrinaste a {{animal.name}} con {{sponsor.name}} por un monto de ${{sponsor.cost}}</i></td>
-                                        <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Ver perfil</a>
                                     </div>
+                                    <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Ver perfil</a>
                                 </div>
                                 {% endif %}
                             {% endfor%}

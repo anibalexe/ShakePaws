@@ -19,9 +19,9 @@
 </ul>
 {% endif %}
 
-<div class="container-fluid">
+<div class="container-fluid"  id="form_div">
     <div class ="row justify-content-around">
-        <div class="col col-md-5 align-self-start mt-5">
+        <div class="col col-md-5 align-self-start mt-3">
             <h4>Datos personales</h4>
             {% if 'ok' in request.GET %}
             <div class="text-center">
@@ -29,7 +29,15 @@
             </div>
             {% endif %}
             <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                {{ form.as_p }}
+              <div class="mt-3">{{ form.fname }}</div>
+                <div class="mt-3">{{ form.lname }}</div>
+                <div class="mt-3">{{ form.image }}</div>
+                <div class="mt-3">{{ form.email }}</div>
+                <div class="mt-3">{{ form.phone }}</div>
+                <div class="mt-3">{{ form.address }}</div>
+                {% if request.user.is_staff %}
+                <div class="mt-3">{{ form.role }}</div>
+                {% endif %}
                 <div class="text-center mt-4"> 
                     <input type="submit"  class="btn btn-dark btncard" value="Guardar" />
                 </div>

@@ -6,7 +6,7 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'perfil-padrino' %}">Datos personales</a>
+    <a class="nav-link" href="{% url 'perfil' %}">Datos personales</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" href="{% url 'notificaciones' %}">Notificaciones</a>
@@ -15,15 +15,15 @@
     <a class="nav-link" href="{% url 'apadrinamientos' %}">Apadrinamientos</a>
   </li>
 </ul>
-<div class="container-fluid">
+<div class="container-fluid"  id="form_div">
     <div class ="row justify-content-around">
-        <div class="col col-md-6 align-self-start mt-5 text-center">
             {% for profile_animal in profile_animals %}
                 {% if profile_animal.profile_id == request.user.profile.id %}
                         {% for animal in animals %}
                             {% if animal.animal_id == profile_animal.animal_id%}
                                 {% for sponsor in sponsors %}
                                         {% if profile_animal.sponsor == sponsor.sponsor_id %}
+                                        <div class="col col-md-5 align-self-start mt-3 text-center alert alert-success" role="alert">
                                         <table class="table table-hover">
                                             <tbody>
                                             <tr> <b>{{ sponsor.name }}</b> </tr>
@@ -34,14 +34,14 @@
                                             </tr>                                
                                             </tbody>
                                         </table> 
-
+                                        <br>
+                                        </div>
                                         {% endif %}
                                 {% endfor%}
                             {% endif %}
                         {% endfor %}
                 {% endif %}
             {% endfor %}
-        </div>
     </div>
 </div>
 {% endblock %}

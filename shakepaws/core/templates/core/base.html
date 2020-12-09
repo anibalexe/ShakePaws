@@ -15,7 +15,7 @@
     <link href="{% static 'core/css/styles.css' %}" rel="stylesheet">
 
 </head>
-<body style="background: linear-gradient(to right, rgb(255, 255, 234), #fdefc0);">
+<body>
 
   <nav id="menu" class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="{% url 'inicio' %}"><img width="100px" src="{% static 'core/img/logooriginal.png' %}" alt="Shakepaws"></a>
@@ -45,7 +45,7 @@
             <a style="color: white;" class="nav-link" href="/admin">Admin</a>
             <a style="color: white;" class="nav-link" href="{% url 'perfil' %}">Mi Perfil</a>
         {% else %}
-            <a style="color: white;" class="nav-link" href="{% url 'perfil-padrino' %}">Mi Perfil</a>
+            <a style="color: white;" class="nav-link" href="{% url 'perfil' %}">Mi Perfil</a>
         {% endif %}
             <a style="color: white;" class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
       {% endif %}
@@ -57,17 +57,20 @@
     
     {% block content %}{% endblock %}
 <div>
-    <!-- Footer -->
-    <footer class="footer" id="pie">
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://onghuellitasdeboco.cl/"> Huellitas de Boco</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
+
+
+
 </div>
 
+<!-- Footer -->
+<footer class="footer">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <b><a id='link_huellitas' href="https://onghuellitasdeboco.cl/"> Huellitas de Boco</a></b>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
     <!-- Bootstrap y Javascripts -->
     <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

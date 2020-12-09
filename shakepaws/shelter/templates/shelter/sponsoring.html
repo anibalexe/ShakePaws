@@ -3,26 +3,21 @@
 {% block title %}Apadrinamiento{% endblock %}
 
 {% block content %}
-<div class="container-fluid" id="cartas">
+<div class="container-fluid">
     <div class ="row justify-content-around">
         {% for animal in animals %}
             <div class="col- col-md align-self-start">
                 <div class="card dogcard">
-                    <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">{{animal.name}}</h4>
-                        <p class="card-text">{{animal.description}}</p>
-                        <p>Edad: {{animal.lifestage}}</p>
-                        <p>Necesito: </p>
-                        <ul>
-                            {% for animal_sponsor in animal_sponsor %}
-                                {% if animal.animal_id == animal_sponsor.animal.animal_id %}
-                                    <li>{{animal_sponsor.sponsor}}</li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                        <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Conóceme</a>
+                    <div class="imagen-dog">
+                        <img class="card-img-top" src="/media/{{animal.image}}" alt="Card image">
                     </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-center">{{animal.name}}</h3>
+                        <p class="card-text"><i>Edad: {{animal.lifestage}}</i></p>
+                        <p class="card-text"><i>Sexo: {{animal.gender}}</i></p>
+                        <p class="card-text"><i>Esterilizad@: {{animal.sterilized}}</i></p>
+                    </div>
+                    <a href="{% url 'perfil-animal' animal.animal_id  %}" class="btn btn-dark btncard">Conóceme</a>
                 </div>
             </div>
         {% endfor %}
@@ -30,5 +25,4 @@
 </div>
 
 {% endblock %}
-
 

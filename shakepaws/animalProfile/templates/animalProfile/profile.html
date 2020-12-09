@@ -9,45 +9,52 @@
             <img class="photo" src="/media/{{animal.image}}">
         </div>
         <div class="col col-md-9 align-self-center">
-            <b><p>{{animal.name}}</p></b>
-            <p>Edad: {{animal.lifestage}}</p>
-            <p>Descripción: {{animal.description}}</p>
-            <p>Esta esperando desde: {{animal.created}}</p> 
+            <b><h2>{{animal.name}}</h2></b>
+            <p><i> Edad: {{animal.lifestage}}</i></p>
+            <p><i> Descripción: {{animal.description}}</i></p>
+            <p><i>Sexo: {{animal.gender}}</i></p>
+            <p><i>Esterilizad@: {{animal.sterilized}}</i></p>
+            <p><i> Esta esperando desde: {{animal.created}}</i></p> 
         </div>
     </div>
     <div class ="row justify-content-around mt-3">
         <div class="col- col-md align-self-start">
-            <b><p>Necesito: </p></b>
+            <b><p>Necesita: </p></b>
             <ul>
-            {% for animal_sponsor in animal_sponsor %}
+            {% for animal_sponsor in animal_sponsors %}
                 {% if animal.animal_id == animal_sponsor.animal.animal_id %}
-                    <li>{{animal_sponsor.sponsor}}</li>
+                    <li><b>{{animal_sponsor.sponsor}}</b>: <i>{{animal_sponsor.sponsor.description}}</i></li>
                 {% endif %}
             {% endfor %}
             </ul>
        </div>
-       <div class="col- col-md-8 align-self-start mb-3">
+       <div class="col- col-md-5 align-self-start mb-3 text-center">
             <b><p>¿Te gustaria apadrinarl@?</p></b>
-            {% for animal_sponsor in animal_sponsor %}
+            {% for animal_sponsor in animal_sponsors %}
                 {% if animal.animal_id == animal_sponsor.animal.animal_id %}
                 <table class="table table-hover">
                     <tbody>
-                      <tr>
-                        <th scope="row">Apadrinar con:</th>
-                        <td>{{animal_sponsor.sponsor}}: {{animal_sponsor.sponsor.description}}</td>
-                        <td> <a href="{% url 'validation' animal.animal_id animal_sponsor.sponsor_id  %}" class="btn btn-dark btncard">Apadrinar</a></td>
-                      </tr>
+                        <tr>
+                            {% for profile_animal in profile_animals %}   
+                            {% if profile_animal.profile_id == request.user.profile.id%}   
+                            {% if animal_sponsor.sponsor == profile_animal.sponsor_id %}
+                            <td id="btn-profile-dog" scope="row">{{animal_sponsor.sponsor}}</td>
+
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            {% if request.user.is_staff %}
+                            {% else %}
+                            <td><a href="{% url 'validation' animal.animal_id animal_sponsor.sponsor_id  %}" id="btn-profile-dog" class="btn btn-dark btncard">Apadrinar</a></td>
+                            {% endif %}
+                        </tr>
                     </tbody>
                   </table>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-</div>
-
-        
+</div>  
 {% endblock %}
-
-
 
 

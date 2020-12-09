@@ -2,11 +2,12 @@
 {% load static %}
 {% block title %}Iniciar sesión{% endblock %}
 {% block content %}
+
 <style>.errorlist{color:red;}</style>
 <main role="main">
-  <div class="container">
-    <div class="row mt-3">
-      <div class="col-md-9 mx-auto mb-5">
+  <div class="container-fluid ">
+    <div class="row mt-5 justify-content-around">
+      <div class="col-md-5 mx-auto mb-5" id="form_div">
         {% if 'register' in request.GET %}
           <p>Usuario registrado con exito!</p>
         {% endif %}

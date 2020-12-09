@@ -13,8 +13,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 def profile(request, animal_id):
     sponsor = Sponsor.objects.all()
     animal_sponsor = Animal_sponsor.objects.all()
+    profile_animal = Profile_animal.objects.all()
+    animals = Animal.objects.all()
     animal = get_object_or_404(Animal, animal_id = animal_id)
-    return render(request, "animalProfile/profile.html", {'animal':animal, 'sponsor':sponsor, 'animal_sponsor':animal_sponsor})
+    return render(request, "animalProfile/profile.html", {'animals':animals, 'animal':animal, 'sponsors':sponsor, 'animal_sponsors':animal_sponsor, 'profile_animals':profile_animal})
 
 def validation(request, animal_id, sponsor_id):
     animal = get_object_or_404(Animal, animal_id = animal_id)
