@@ -6,7 +6,7 @@ class Profile_animalForm(forms.ModelForm):
         model = Profile_animal
         fields = ['profile', 'animal', 'sponsor']
         widgets = {
-            'profile': forms.TextInput(attrs={'class':'form-control','placeholder':'Perfil','value':'1','type':'hidden'}),
-            'animal': forms.TextInput(attrs={'class':'form-control','placeholder':'Animal','value':'102', 'type':'hidden'}),
-            'sponsor': forms.TextInput(attrs={'class':'form-control','placeholder':'Apadrinamiento', 'value':'3','type':'hidden'}),
+            'profile': forms.TextInput(attrs={'class':'form-control','placeholder':'Perfil', 'value':'1', 'type':'hidden'}),
+            'animal': forms.TextInput(attrs={'class':'form-control','placeholder':'Animal',  'value':'123456', 'type':'hidden'}),
+            'sponsor': forms.TextInput(attrs={'class':'form-control','placeholder':'Apadrinamiento', 'value':'123456', 'type':'hidden'}),
         }

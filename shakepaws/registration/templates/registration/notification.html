@@ -29,7 +29,11 @@
                                             <tr> <b>{{ sponsor.name }}</b> </tr>
                                             <tr>
                                                 <td> <i>{{ profile_animal.created }}</i></td>
-                                                <td> {{ animal.name }} Fué apadrinada!.</td>
+                                                {% if animal.gender == 'Macho' or animal.gender == 'macho' %}
+                                                <td> {{ animal.name }} Fué apadrinado!</td>
+                                                {% else %}
+                                                <td> {{ animal.name }} Fué apadrinada!</td>
+                                                {% endif %}
                                                 <td> <a href=""> <b>Ver más</b> </a>  </td>
                                             </tr>                                
                                             </tbody>
